@@ -2,6 +2,11 @@
 <html>
 <head>
   <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
     .my-button {
       background-color: blue;
       color: white;
@@ -9,25 +14,45 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      display: block;
-      margin: 20px auto;
+      margin: 10px;
     }
     #message {
-      text-align: center;
       font-size: 20px;
       margin-top: 20px;
+    }
+    #name-input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
   <button class="my-button" onclick="changeText()">Click Me</button>
+  <br>
+  <input type="text" id="name-input" placeholder="Enter your name" />
+  <button class="my-button" onclick="greetUser()">Say Hello</button>
+
   <div id="message">Waiting for action...</div>
 
   <script>
     function changeText() {
       document.getElementById("message").textContent = "Button clicked! 🎉";
       document.querySelector("button").style.display = "none";
+      document.getElementById("message").style.color = "green";
+    }
+
+    function greetUser() {
+      const name = document.getElementById("name-input").value;
+      if (name.trim()) {
+        document.getElementById("message").textContent = `Hi, ${name}! 👋`;
+        document.getElementById("message").style.color = "purple";
+      } else {
+        document.getElementById("message").textContent = "Please enter your name first!";
+        document.getElementById("message").style.color = "red";
+      }
     }
   </script>
 
